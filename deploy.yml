@@ -2,15 +2,10 @@
 - hosts: dev
   gather_facts: no
   tasks:
-  - name: checking status
-    stat:
-      path: /tmp/devops
-      register: demo
   - name: delete the folder
     file:
       path: /tmp/devops
-      state: absent
-      when: demo.stat.exists == true
+      state: directory
   - name: creating a folder
     file:
      path: /tmp/devops
